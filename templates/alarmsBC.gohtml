@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>Title</h1>
+</header>
+<ul>
+    {{ range . }}
+        {{ $id := .Id }}
+        <li>
+            <div>
+                <label>
+                    <input type="checkbox">{{ .Hours }}:{{ .Minutes }}
+                </label>
+            </div>
+            {{ range .Days }}
+{{/*                <button hx-post="/click?id={{ $id }}&active={{ .Status }}&day={{ .Status }}" hx-swap="outerHTML"*/}}
+{{/*                        class="day" {{ if .Status }}style="background-color: lightblue" {{ end }}>*/}}
+{{/*                    {{ .Name }}*/}}
+{{/*                </button>*/}}
+                <button {{ if .Status }}style="background-color: lightblue" {{ end }}>
+                    {{ .Name }}
+                </button>
+            {{end}}
+            <div>
+                <label for="alarmCheck">
+                    <input type="checkbox" id="alarmCheck" name="alarmCheck" checked />alarm
+                </label>
+            </div>
+            <div>
+                <label for="shadesCheck">
+                    <input type="checkbox" id="shadesCheck" name="shadesCheck" checked />Curtains
+                </label>
+            </div>
+            <div>
+                <label for="acCheck">
+                    <input type="checkbox" id="acCheck" name="acCheck" checked />A/C
+                </label>
+            </div>
+            <button>Delete</button>
+
+        </li>
+        <br>
+
+    {{ end }}
+</ul>
+</body>
+</html>

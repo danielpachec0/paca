@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>Title</h1>
+</header>
+<h2>{{ .Hours }}:{{ .Minutes }}</h2>
+{{ range .Days }}
+    <label>
+        <input type="checkbox">{{ .Name }}
+    </label>
+{{end}}
+<div>
+    <label for="alarmCheck">
+        <input type="checkbox" id="alarmCheck" name="alarmCheck" checked />alarm
+    </label>
+</div>
+<div>
+    <label for="shadesCheck">
+        <input type="checkbox" id="shadesCheck" name="shadesCheck" checked />Curtains
+    </label>
+</div>
+<div>
+    <label for="acCheck">
+        <input type="checkbox" id="acCheck" name="acCheck" checked />A/C
+    </label>
+</div>
+<a href="/alarms/{{ .id }}/edit">Edit</a>
+<a href="">Delete</a>
+</body>
+</html>

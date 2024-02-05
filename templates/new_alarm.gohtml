@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>Create New Alarm</h1>
+</header>
+<form class="main" action="/alarm/new" id="main_form" method="post">
+    <div>
+        <select class="clock" form="main_form" name="hours" style="display: inline">
+            {{ range $index, $element := .HoursArr}}
+                <option {{if eq  $index 8 }}selected{{ end }} value={{ $index }}>{{ customFunction $index }}</option>
+            {{end}}
+        </select>
+        <p style="display: inline">:</p>
+        <select class="clock" form="main_form" name="minutes" style="display: inline">
+            {{ range $index, $element := .MinutesArr}}
+                <option  {{if eq  $index 0 }}selected{{ end }} value={{ $index }}>{{ customFunction $index }}</option>
+            {{end}}
+        </select>
+    </div>
+    <br>
+    <div class="repeat" style="display: flex">
+        <input form="main_form" id="monday" name="monday" type="checkbox">
+        <label class="a" for="monday">M</label>
+        <input  name="tuesday" type="checkbox">
+        <label class="a" for="tuesday">T</label>
+        <input  name="wednesday" type="checkbox">
+        <label class="a" for="wednesday">W</label>
+        <input  name="thursday" type="checkbox">
+        <label class="a" for="thursday">T</label>
+        <input  name="friday" type="checkbox">
+        <label class="a" for="friday">F</label>
+        <input name="saturday" type="checkbox">
+        <label class="a" for="saturday">S</label>
+        <input name="sunday" type="checkbox" form="main_form">
+        <label class="a" for="sunday">S</label>
+    </div>
+    <br>
+    <div class="toggles_div">
+        <div>
+            <label class="toggle_base">
+                <input type="checkbox"  name="alarm">Alarm
+            </label>
+        </div>
+        <div>
+            <label class="toggle_base">
+                <input type="checkbox" name="ac">A/C
+            </label>
+        </div>
+        <div>
+            <label class="toggle_base">
+                <input type="checkbox" name="curtain">Curtain
+            </label>
+        </div>
+    </div>
+    <br>
+    <div>
+        <a href="javascript:history.back()">Go Back</a>
+        <button form="main_form">save</button>
+    </div>
+</form>
+</body>
+</html>

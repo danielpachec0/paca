@@ -1,0 +1,30 @@
+//package main
+//
+//import (
+//	"database/sql"
+//	"fmt"
+//	_ "github.com/mattn/go-sqlite3"
+//	"log"
+//)
+//
+//func main() {
+//	db, err := sql.Open("sqlite3", "/home/daniel/Projetcs/paca/cmd/test.db")
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	//fmt.Println(db)
+//	rows, err := db.Query("select * from test")
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	names := make([]string, 0)
+//	for rows.Next() {
+//		var data string
+//		var id int
+//		if err := rows.Scan(&id, &data); err != nil {
+//			log.Fatal(err)
+//		}
+//		names = append(names, data)
+//	}
+//	fmt.Println(names)
+//}

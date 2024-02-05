@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>Edit Alarm</h1>
+</header>
+<form class="main" action="/alarm/{{ .Alarm.Id }}/edit" id="main_form" method="post">
+    <div>
+        <select autocomplete class="clock" form="main_form" name="hours" style="display: inline">
+            {{ $hours := .Alarm.Hours }}
+            {{ range $index, $element := .Aux.HoursArr}}
+                <option {{if eq  $index $hours }}selected{{ end }} value={{ $index }}>{{ customFunction $index }}</option>
+            {{end}}
+        </select>
+        <p style="display: inline">:</p>
+        <select class="clock" form="main_form" name="minutes" style="display: inline">
+            {{ $minutes := .Alarm.Minutes }}
+            {{ range $index, $element := .Aux.MinutesArr}}
+                <option {{if eq  $index $minutes }}selected{{ end }} value={{ $index }}>{{ customFunction $index }}</option>
+            {{end}}
+        </select>
+
+
+    </div>
+    <br>
+    {{ range .Alarm.Days }}
+    <label>
+        <input type="checkbox" form="main_form" name="{{ .Name }}"  {{ if .Status  }}checked{{ end }}>{{ .NameAbbreviation }}
+    </label>
+    {{end}}
+    <div>
+        <label for="alarmCheck">
+            <input type="checkbox" form="main_form" name="alarm" {{ if .Alarm.Alarm }}checked{{ end }} />alarm
+        </label>
+    </div>
+    <div>
+        <label for="shadesCheck">
+            <input type="checkbox" form="main_form" name="curtain" {{ if .Alarm.Curtain }}checked{{ end }} />Curtains
+        </label>
+    </div>
+    <div>
+        <label for="acCheck">
+            <input type="checkbox" form="main_form" name="ac" {{ if .Alarm.Ac }}checked{{ end }} />A/C
+        </label>
+    </div>
+    <br>
+    <div>
+        <a href="javascript:history.back()">Go Back</a>
+        <button form="main_form">save</button>
+    </div>
+</form>
+</body>
+</html>
